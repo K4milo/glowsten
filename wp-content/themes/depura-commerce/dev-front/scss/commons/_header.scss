@@ -1,0 +1,258 @@
+.site-header {
+	padding: 0 0;
+	.navbar {
+		position: relative;
+		margin: 0 0 0 0;
+		border-radius: 0;
+		border: none;
+		background-color: $white;
+		height: auto;
+		transition: all 0.5s;
+		
+		// Scrolled menu styles
+		&.scroll_menu {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: $white;
+			border-bottom: rem(2px) solid $blue;	
+			z-index: 999;
+			// Stycky logo
+			.navbar-brand {
+				h1 {
+					width: rem(215px);
+					height: rem(44px);
+					margin: rem(5px) 0;
+					transition: all 0.3s;
+					@include iconBg('../images/brand/logo.svg');
+				}
+			}
+		}
+
+		// Button
+		&-toggle {
+			float: none;
+			border: none;
+			@include mq('sm') {
+				display: none;
+			}
+			span {
+				&.icon-bar {
+					background-color: $gray;
+					height: rem(3px);
+				}
+			}
+		}
+
+		// desktop layout fix
+		.row-header {
+			@include wrapper;
+			@include mq('sm') {				
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: rem(20px) rem(35px);
+			}
+		}
+
+		&-header {
+			width: 100%;
+			float: none;
+			display: flex;
+			flex-direction: row-reverse;
+			@include mq('sm') {
+				display: block;
+				width: auto;
+			}	
+		}
+
+		&-brand {
+			float: none;
+			padding: 0 0;
+			margin: 0 0;
+			height: auto;
+			font-size: 0;
+			flex-grow: 2;
+			@include mq('sm') {
+				margin-left: 0 !important;
+			}
+			h1 {
+				padding: 0 0;
+				margin: rem(10px) 0;
+				font-size: 0;
+				width: rem(215px);
+				height: rem(44px);
+				@include iconBg('../images/brand/logo.svg');
+				@include mq('md') {					
+					width: rem(215px);
+					height: rem(44px);
+				}
+			}
+		}
+
+		&-collapse {
+			float: none;
+			padding: rem(16px) rem(20px) rem(30px);
+			@include mq('sm') {
+				padding: initial;
+				display: inherit !important;
+				> div {
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+			// Menu
+			ul {
+				&.navbar-nav {
+					@include mq('sm') {
+						float: none;
+						margin: inherit;
+					}
+					> li {
+						@include mq('sm') {
+							display: inline-block;
+						}
+						> a {
+							color: $blue-dk;
+							@include font(18px);
+							&:hover,
+							&:focus {
+								color: $blue-lt;
+								background-color: transparent;
+							}
+						}
+						&.active {				
+							a {
+								color: $blue-lt;
+								background-color: transparent;
+							}					
+						}
+						&:hover {
+							.dropdown-menu {
+								@include mq('sm') {
+									display: block;
+								}
+							}
+						}
+						.dropdown-menu {
+							padding: 0 0;
+							margin: 0 0;
+							li {
+								background-color: $blue;
+								a {
+									padding: rem(16px);
+								}
+								&.active {
+									a {
+										background-color: $blue-dk;
+										color: $white;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Social menu
+.menu-social {
+	max-height: rem(40px);
+	&--social {
+		text-align: center;
+		padding: 0 0;
+		margin: 0 0;
+		@include mq('sm') {
+			margin: 0 0 0 rem(80px);
+			margin-top: rem(7px);
+		}
+		li {
+			display: inline-block;
+			vertical-align: middle;
+			margin: rem(12px) rem(5px);
+			@include mq('sm') {
+				margin: 0 rem(5px);
+			}
+			a {
+				display: block;
+				width: rem(35px);
+				height: rem(35px);
+				background-color: $gray;
+				border-radius: 100%;
+				position: relative;
+				&:hover {
+					background-color: $blue-dk;
+				}
+			}
+			&.fb {
+				a {
+					@include iconBg('../images/icons/facebook.svg', 55%);
+					background-color: $blue-fb;
+				}				
+			}
+			&.ins {
+				a {
+					background-image: linear-gradient(to bottom left, $purple, $yellow);
+					font-size: 0px;
+
+					&::after {
+						content: "";
+						display: block;
+						@include coverAbsolute(2);
+						@include iconBg('../images/icons/instagram.svg', 55%);
+					}
+				}				
+			}
+		}
+	}
+}
+
+// MAN MENU
+body {
+	&.term-hombre {
+		.navbar {
+			background-color: $blue-lt;
+			.navbar-brand {
+				h1 {
+					@include iconBg('../images/brand/lili-men.svg');
+					background-size: 84%;
+				}
+			}
+
+			// Dropdown
+			.navbar-collapse {
+				ul.navbar-nav > li {
+					ul.dropdown-menu {
+						padding: 0 0;
+						margin: 0 0;
+						li {
+							background-color: $white;
+							a {
+								color: $blue;
+							}
+							&.active {
+								a {
+									background-color: $blue;
+									color: $white;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Scrolled menu styles
+			&.scroll_menu {
+				border-color: $blue;
+				.navbar-brand {
+					h1 {
+						@include iconBg('../images/brand/lili-men-scroll.svg');
+					}
+				}	
+			}
+		}
+	}
+}
